@@ -128,7 +128,7 @@ public class RaceControl {
                 this.displayManageRacesMenu();
                 break;
             case 3:
-                // TODO manageTournaments();
+                this.displayManageTournamentsMenu();
                 break;
             case 4:
                 System.out.println("Has cerrado la aplicación");
@@ -409,6 +409,165 @@ public class RaceControl {
         this.currentRace.setRaceName(newRaceName);
         System.out.println("La carrera " + actualRaceName + " ha cambiado su nombre a " +
                 newRaceName);
+    }
+
+    public void displayManageTournamentsMenu(){
+        System.out.println("Selecciona la acción que deseas realizar: ");
+        int selectedOption;
+
+        do{
+            System.out.println("1 - Ver torneos");
+            System.out.println("2 - Añadir torneo");
+            System.out.println("3 - Eliminar torneo");
+            System.out.println("4 - Editar torneo");
+            System.out.println("5 - Iniciar torneo");
+            System.out.println("6 - Volver");
+            selectedOption = Input.integer();
+
+            switch(selectedOption){
+                case 1:
+                    Utils.printFromList(this.getTournaments());
+                    break;
+                case 2:
+                    this.addTournament();
+                    break;
+                case 3:
+                    this.removeTournament();
+                    break;
+                case 4:
+                    this.displayEditTournamentMenu();
+                    break;
+                case 5:
+                    this.startTournament();
+                    Utils.printFromList(currentTournament.getTournamentCars());
+                    break;
+                case 6:
+                    this.currentTournament = null;
+                    this.init();
+                    break;
+                default:
+                    System.out.println("Opción no válida");
+                    break;
+            }
+        }while (selectedOption != 6);
+    }
+
+    public void addTournament(){
+        Tournament newTournament = new Tournament();
+        this.getTournaments().add(newTournament);
+        System.out.println("Se ha creado el torneo " + newTournament.getTournamentName());
+    }
+
+    public void removeTournament(){
+        System.out.println("Selecciona el torneo que deseas eliminar: ");
+        Tournament tournamentToRemove = Utils.printAndSelectFromList(this.getTournaments());
+        String isUserSure = Input.string("¿Seguro que deseas eliminar el garaje "
+                + tournamentToRemove.getTournamentName() + "? Si(s) / No(n)");
+        if (isUserSure.equalsIgnoreCase("s")) {
+            this.getTournaments().remove(tournamentToRemove);
+            System.out.println("El torneo " + tournamentToRemove.getTournamentName() + " ha sido eliminado correctamente");
+        } else {
+            System.out.println("Operación caneclada");
+            this.displayManageTournamentsMenu();
+        }
+    }
+
+    public void startTournament(){
+        System.out.println("Selecciona el torneo que quieres iniciar: ");
+        this.currentTournament = Utils.printAndSelectFromList(this.getTournaments());
+        this.currentTournament.startTournament();
+    }
+
+    public void displayEditTournamentMenu(){
+        System.out.println("Selecciona el torneo que deseas editar: ");
+        this.currentTournament = Utils.printAndSelectFromList(this.getTournaments());
+        int selectedOption;
+
+        do{
+            System.out.println("Selecciona la acción que deseas realizar: ");
+            System.out.println("1 - Ver garajes participantes");
+            System.out.println("2 - Ver carreras");
+            System.out.println("3 - Añadir garaje");
+            System.out.println("4 - Eliminar garaje");
+            System.out.println("5 - Añadir carrera");
+            System.out.println("6 - Eliminar carrera");
+            System.out.println("7 - Cambiar nombre");
+            System.out.println("8 - Volver");
+            selectedOption = Input.integer();
+
+            switch(selectedOption){
+                case 1:
+                    Utils.printFromList(this.currentTournament.getTournamentsGarages());
+                    break;
+                case 2:
+                    Utils.printFromList(this.currentTournament.getTournamentRaces());
+                    break;
+                case 3:
+                    this.addGarageToTournament();
+                    break;
+                case 4:
+                    this.removeGarageFromTournament();
+                    break;
+                case 5:
+                    this.addRaceToTournament();
+                    break;
+                case 6:
+                    this.removeRaceFromTournament();
+                    break;
+                case 7:
+                 // TODO cambiar nombre
+                    break;
+                case 8:
+                    this.currentTournament = null;
+                    this.displayManageTournamentsMenu();
+                    break;
+                default:
+                    System.out.println("Opción no válida");
+                    break;
+            }
+        }while(selectedOption != 7);
+    }
+
+    public void addGarageToTournament(){
+        System.out.println("Selecciona el garaje que deseas añadir: ");
+        Garage garageToAdd = Utils.printAndSelectFromList(this.getGarages());
+        this.currentTournament.getTournamentsGarages().add(garageToAdd);
+        System.out.println("Has añadido el garaje " + garageToAdd.getGarageName());
+    }
+
+    public void removeGarageFromTournament(){
+        System.out.println("Selecciona el garaje que deseas eliminar");
+        Garage garageToTemove = Utils.printAndSelectFromList(this.currentTournament.getTournamentsGarages());
+        String isUserSure = Input.string("¿Seguro que deseas eliminar el garaje "
+                + garageToTemove.getGarageName() + "? Si(s) / No(n)");
+        if (isUserSure.equalsIgnoreCase("s")) {
+            this.currentTournament.getTournamentsGarages().remove(garageToTemove);
+            System.out.println("El garaje " + garageToTemove.getGarageName() + " ha sido eliminado correctamente");
+        } else {
+            System.out.println("Operación caneclada");
+            this.displayEditTournamentMenu();
+        }
+    }
+
+    public void addRaceToTournament(){
+        System.out.println("Selecciona la carrera que deseas añadir: ");
+        Race  raceToAdd = Utils.printAndSelectFromList(this.getRaces());
+        this.currentTournament.getTournamentRaces().add(raceToAdd);
+        System.out.println("Has añadido la carrera " + raceToAdd.getRaceName());
+    }
+
+    public void removeRaceFromTournament(){
+        System.out.println("Selecciona la carrera que deseas eliminar");
+        Race raceToTemove = Utils.printAndSelectFromList(this.currentTournament.getTournamentRaces());
+        String isUserSure = Input.string("¿Seguro que deseas eliminar el garaje "
+                +raceToTemove.getRaceName() + "? Si(s) / No(n)");
+        if (isUserSure.equalsIgnoreCase("s")) {
+            this.currentTournament.getTournamentsGarages().remove(raceToTemove);
+            System.out.println("La carrera " + raceToTemove.getRaceName() + " ha sido eliminada correctamente");
+        } else {
+            System.out.println("Operación caneclada");
+            this.displayEditTournamentMenu();
+        }
     }
 }
 

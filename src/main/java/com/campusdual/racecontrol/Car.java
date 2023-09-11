@@ -16,6 +16,7 @@ public class Car implements Comparable<Car> {
     public static final int MAX_SPEED = 200;
     private int speed = 0;
     private double distanceCovered = 0;
+    private int points = 0;
 
     public Car(){
         this.brand = Input.string("Introduce la marca: ");
@@ -49,6 +50,14 @@ public class Car implements Comparable<Car> {
 
     public void setGarageName(String garageName) {
         this.garageName = garageName;
+    }
+
+    public int getPoints() {
+        return points;
+    }
+
+    public void setPoints(int points) {
+        this.points += points;
     }
 
     private void speedUp(){
@@ -113,6 +122,7 @@ public class Car implements Comparable<Car> {
         sb.append("\n\t\tModelo: ").append(this.getModel());
         sb.append("\n\t\tGaraje: ").append(this.getGarageName());
         sb.append("\n\t\tDistancia recorrida: ").append(this.getDistanceCovered());
+        sb.append("\n\t\tPuntos: ").append(this.getPoints());
         sb.append("######");
         return sb.toString();
     }

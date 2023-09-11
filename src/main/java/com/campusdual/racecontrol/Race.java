@@ -64,6 +64,7 @@ public abstract class Race {
             }
         }
     }
+
     public abstract void startRace();
     public void getRaceRanking(){
         Collections.sort(this.getCompetingCars());
