@@ -1,11 +1,10 @@
 package com.campusdual.racecontrol;
 
+import com.campusdual.racecontrol.util.Input;
 import com.campusdual.racecontrol.util.Utils;
-import org.example.Input;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
 

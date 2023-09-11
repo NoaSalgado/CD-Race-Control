@@ -1,6 +1,6 @@
 package com.campusdual.racecontrol;
 
-import org.example.Input;
+import com.campusdual.racecontrol.util.Input;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -9,8 +9,7 @@ public class QualifierRace extends Race{
     public static final String RACE_TYPE = "Qualifier";
     private int warmUpMinutes;
 
-    public QualifierRace(String raceName, String raceType) {
-        super(raceName, raceType);
+    public QualifierRace() {
         this.warmUpMinutes = Input.integer("Introduce la duración en minutos del calentamiento");
     }
 
@@ -29,7 +28,24 @@ public class QualifierRace extends Race{
 
     @Override
     public void startRace() {
-
+        this.setParticipatingCars();
+        int timeRemaining = this.getWarmUpMinutes();
+        while(timeRemaining > 0){
+            for(Car car: this.getCompetingCars()){
+                car.updateSpeedByCycle();
+            }
+            timeRemaining--;
+        }
+        this.getRaceRanking();
+        int carsInRace = this.getCompetingCars().size();
+        while(carsInRace > 1){
+            for(int i = 0; i < carsInRace; i++){
+                this.getCompetingCars().get(i).updateSpeedByCycle();
+            }
+            this.getRaceRanking();
+            carsInRace--;
+        }
+        this.checkPodium();
     }
 
     @Override

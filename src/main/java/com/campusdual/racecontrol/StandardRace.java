@@ -1,6 +1,6 @@
 package com.campusdual.racecontrol;
 
-import org.example.Input;
+import com.campusdual.racecontrol.util.Input;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -8,6 +8,9 @@ public class StandardRace extends Race{
     public static final String MINS_DURATION = "minsDuration";
     private int minsDuration = 180;
 
+    public StandardRace(){
+
+    }
     public StandardRace(String raceName, String raceType) {
         super(raceName, raceType);
     }
@@ -25,7 +28,16 @@ public class StandardRace extends Race{
 
     @Override
     public void startRace() {
-
+        this.setParticipatingCars();
+        int timeRemainig = this.minsDuration;
+        while(timeRemainig > 0){
+            for(Car car: this.getCompetingCars()){
+                car.updateSpeedByCycle();
+            }
+            timeRemainig--;
+        }
+        this.getRaceRanking();
+        this.checkPodium();
     }
 
     @Override

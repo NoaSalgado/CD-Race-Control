@@ -1,6 +1,6 @@
 package com.campusdual.racecontrol;
 
-import org.example.Input;
+import com.campusdual.racecontrol.util.Input;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 

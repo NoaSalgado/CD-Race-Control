@@ -1,13 +1,11 @@
 package com.campusdual.racecontrol;
 
-import org.example.Input;
+import com.campusdual.racecontrol.util.Input;
+import com.campusdual.racecontrol.util.Utils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public abstract class Race {
     public static final String RACE_NAME = "raceName";
@@ -18,11 +16,10 @@ public abstract class Race {
     private String raceType;
     private final List<Garage> participatingGarages = new ArrayList<>();
     private final List<Car> competingCars = new ArrayList<>();
-    private final Map<String, Car> podium = new HashMap<>();
+    private final List<Car> podium = new ArrayList<>();
 
-    public Race(String raceType){
+    public Race(){
         this.raceName = Input.string("Introduce el nombre de la carrera: ");
-        this.raceType = raceType;
     }
     public Race(String raceName, String raceType){
         this.raceName = raceName;
@@ -33,8 +30,16 @@ public abstract class Race {
         return raceName;
     }
 
+    public void setRaceName(String raceName) {
+        this.raceName = raceName;
+    }
+
     public String getRaceType() {
         return raceType;
+    }
+
+    public void setRaceType(String raceType) {
+        this.raceType = raceType;
     }
 
     public List<Garage> getParticipatingGarages() {
@@ -45,7 +50,7 @@ public abstract class Race {
         return competingCars;
     }
 
-    public Map<String, Car> getPodium() {
+    public List<Car> getPodium() {
         return podium;
     }
 
@@ -54,12 +59,29 @@ public abstract class Race {
             this.competingCars.addAll(this.getParticipatingGarages().get(0).getGarageCars());
         }else{
             for(Garage garage: this.getParticipatingGarages()){
-                //int randomCarIndex = Utils.generateRandomNumber(garage.getGarageCars().size());
-                //this.getCompetingCars().add(garage.getGarageCars().get(randomCarIndex));
+                int randomCarIndex = Utils.generateRandomNumber(0, garage.getGarageCars().size());
+                this.getCompetingCars().add(garage.getGarageCars().get(randomCarIndex));
             }
         }
     }
     public abstract void startRace();
+    public void getRaceRanking(){
+        Collections.sort(this.getCompetingCars());
+        Collections.reverse(this.getCompetingCars());
+    }
+
+    public void checkPodium(){
+        for(int i = 0; i < 3; i++){
+            this.podium.add(this.competingCars.get(i));
+        }
+    }
+
+    public void printPodium(){
+        for(int i = 0; i < this.podium.size(); i++){
+            System.out.println("Podición: " + (i+1) + "º");
+            System.out.println(this.getPodium().get(i));
+        }
+    }
     public abstract  JSONObject exportRace();
 
     protected JSONArray exportParticipatingGarages(){

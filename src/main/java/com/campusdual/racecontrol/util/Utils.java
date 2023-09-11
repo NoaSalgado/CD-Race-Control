@@ -1,5 +1,6 @@
 package com.campusdual.racecontrol.util;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -25,14 +26,14 @@ public class Utils {
         return sb.toString();
     }
 
-    public static <T> int printAndSelectFromList(List<T> list){
+    public static <T> T printAndSelectFromList(List<T> list){
         printFromList(list);
         int selection = Input.integer();
 
         while(!isSelectionCorrect(selection, list.size())){
             selection = Input.integer("Opción incorrecta, selecciona una opción válida: ");
         }
-        return selection;
+        return list.get(selection -1);
     }
 
     public static boolean isSelectionCorrect(int selection, int listSize){

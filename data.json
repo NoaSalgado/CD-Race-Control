@@ -1,1 +1,527 @@
-{"garages":[{"garageName":"Crazy Cars","garageCars":[{"garage":"","model":"Xara","brand":"Citroen"},{"garage":"","model":"Mondeo","brand":"Ford"},{"garage":"","model":"207","brand":"Peugeot"},{"garage":"","model":"Auris","brand":"Toyota"},{"garage":"","model":"Prius","brand":"Toyota"}]},{"garageName":"Fabulous Cars","garageCars":[{"garage":"","model":"Leon","brand":"Seat"},{"garage":"","model":"Megane","brand":"Renault"},{"garage":"","model":"Ibiza","brand":"Seat"},{"garage":"","model":"Clio","brand":"Renault"},{"garage":"","model":"208","brand":"Peugeot"}]},{"garageName":"Funny Cars","garageCars":[{"garage":"","model":"A3","brand":"Audi"},{"garage":"","model":"C3","brand":"Citroen"},{"garage":"","model":"Fiesta","brand":"Ford"},{"garage":"","model":"Stilo","brand":"Fiat"},{"garage":"","model":"Civic","brand":"Honda"}]}],"tournaments":[{"tournamentName":"Galician Tournament","tournamentRaces":[{"raceType":"Standard","competingCars":[],"raceName":"Ourense Prix","participatingGarages":[{"garageName":"Crazy Cars","garageCars":[{"garage":"","model":"Xara","brand":"Citroen"},{"garage":"","model":"Mondeo","brand":"Ford"},{"garage":"","model":"207","brand":"Peugeot"},{"garage":"","model":"Auris","brand":"Toyota"},{"garage":"","model":"Prius","brand":"Toyota"}]}],"minsDuration":180},{"raceType":"Qualifier","competingCars":[],"raceName":"Vigo Prix","participatingGarages":[{"garageName":"Crazy Cars","garageCars":[{"garage":"","model":"Xara","brand":"Citroen"},{"garage":"","model":"Mondeo","brand":"Ford"},{"garage":"","model":"207","brand":"Peugeot"},{"garage":"","model":"Auris","brand":"Toyota"},{"garage":"","model":"Prius","brand":"Toyota"}]},{"garageName":"Funny Cars","garageCars":[{"garage":"","model":"A3","brand":"Audi"},{"garage":"","model":"C3","brand":"Citroen"},{"garage":"","model":"Fiesta","brand":"Ford"},{"garage":"","model":"Stilo","brand":"Fiat"},{"garage":"","model":"Civic","brand":"Honda"}]}],"warmUpMinutes":25},{"raceType":"Qualifier","competingCars":[],"raceName":"Santiago Prix","participatingGarages":[{"garageName":"Fabulous Cars","garageCars":[{"garage":"","model":"Leon","brand":"Seat"},{"garage":"","model":"Megane","brand":"Renault"},{"garage":"","model":"Ibiza","brand":"Seat"},{"garage":"","model":"Clio","brand":"Renault"},{"garage":"","model":"208","brand":"Peugeot"}]}],"warmUpMinutes":30},{"raceType":"Standard","competingCars":[],"raceName":"Lugo Prix","participatingGarages":[{"garageName":"Funny Cars","garageCars":[{"garage":"","model":"A3","brand":"Audi"},{"garage":"","model":"C3","brand":"Citroen"},{"garage":"","model":"Fiesta","brand":"Ford"},{"garage":"","model":"Stilo","brand":"Fiat"},{"garage":"","model":"Civic","brand":"Honda"}]},{"garageName":"Fabulous Cars","garageCars":[{"garage":"","model":"Leon","brand":"Seat"},{"garage":"","model":"Megane","brand":"Renault"},{"garage":"","model":"Ibiza","brand":"Seat"},{"garage":"","model":"Clio","brand":"Renault"},{"garage":"","model":"208","brand":"Peugeot"}]}],"minsDuration":180}]}],"races":[{"raceType":"Standard","competingCars":[],"raceName":"Ourense Prix","participatingGarages":[{"garageName":"Crazy Cars","garageCars":[{"garage":"","model":"Xara","brand":"Citroen"},{"garage":"","model":"Mondeo","brand":"Ford"},{"garage":"","model":"207","brand":"Peugeot"},{"garage":"","model":"Auris","brand":"Toyota"},{"garage":"","model":"Prius","brand":"Toyota"}]}],"minsDuration":180},{"raceType":"Qualifier","competingCars":[],"raceName":"Vigo Prix","participatingGarages":[{"garageName":"Crazy Cars","garageCars":[{"garage":"","model":"Xara","brand":"Citroen"},{"garage":"","model":"Mondeo","brand":"Ford"},{"garage":"","model":"207","brand":"Peugeot"},{"garage":"","model":"Auris","brand":"Toyota"},{"garage":"","model":"Prius","brand":"Toyota"}]},{"garageName":"Funny Cars","garageCars":[{"garage":"","model":"A3","brand":"Audi"},{"garage":"","model":"C3","brand":"Citroen"},{"garage":"","model":"Fiesta","brand":"Ford"},{"garage":"","model":"Stilo","brand":"Fiat"},{"garage":"","model":"Civic","brand":"Honda"}]}],"warmUpMinutes":25},{"raceType":"Standard","competingCars":[],"raceName":"Lugo Prix","participatingGarages":[{"garageName":"Funny Cars","garageCars":[{"garage":"","model":"A3","brand":"Audi"},{"garage":"","model":"C3","brand":"Citroen"},{"garage":"","model":"Fiesta","brand":"Ford"},{"garage":"","model":"Stilo","brand":"Fiat"},{"garage":"","model":"Civic","brand":"Honda"}]},{"garageName":"Fabulous Cars","garageCars":[{"garage":"","model":"Leon","brand":"Seat"},{"garage":"","model":"Megane","brand":"Renault"},{"garage":"","model":"Ibiza","brand":"Seat"},{"garage":"","model":"Clio","brand":"Renault"},{"garage":"","model":"208","brand":"Peugeot"}]}],"minsDuration":180},{"raceType":"Qualifier","competingCars":[],"raceName":"Santiago Prix","participatingGarages":[{"garageName":"Fabulous Cars","garageCars":[{"garage":"","model":"Leon","brand":"Seat"},{"garage":"","model":"Megane","brand":"Renault"},{"garage":"","model":"Ibiza","brand":"Seat"},{"garage":"","model":"Clio","brand":"Renault"},{"garage":"","model":"208","brand":"Peugeot"}]}],"warmUpMinutes":30}]}
+{
+  "garages": [
+    {
+      "garageName": "Crazy Cars",
+      "garageCars": [
+        {
+          "garage": "",
+          "model": "Xara",
+          "brand": "Citroen"
+        },
+        {
+          "garage": "",
+          "model": "Mondeo",
+          "brand": "Ford"
+        },
+        {
+          "garage": "",
+          "model": "207",
+          "brand": "Peugeot"
+        },
+        {
+          "garage": "",
+          "model": "Auris",
+          "brand": "Toyota"
+        },
+        {
+          "garage": "",
+          "model": "Prius",
+          "brand": "Toyota"
+        }
+      ]
+    },
+    {
+      "garageName": "Fabulous Cars",
+      "garageCars": [
+        {
+          "garage": "",
+          "model": "Leon",
+          "brand": "Seat"
+        },
+        {
+          "garage": "",
+          "model": "Megane",
+          "brand": "Renault"
+        },
+        {
+          "garage": "",
+          "model": "Ibiza",
+          "brand": "Seat"
+        },
+        {
+          "garage": "",
+          "model": "Clio",
+          "brand": "Renault"
+        },
+        {
+          "garage": "",
+          "model": "208",
+          "brand": "Peugeot"
+        }
+      ]
+    },
+    {
+      "garageName": "Funny Cars",
+      "garageCars": [
+        {
+          "garage": "",
+          "model": "A3",
+          "brand": "Audi"
+        },
+        {
+          "garage": "",
+          "model": "C3",
+          "brand": "Citroen"
+        },
+        {
+          "garage": "",
+          "model": "Fiesta",
+          "brand": "Ford"
+        },
+        {
+          "garage": "",
+          "model": "Stilo",
+          "brand": "Fiat"
+        },
+        {
+          "garage": "",
+          "model": "Civic",
+          "brand": "Honda"
+        }
+      ]
+    }
+  ],
+  "tournaments": [
+    {
+      "tournamentName": "Galician Tournament",
+      "tournamentRaces": [
+        {
+          "raceType": "Standard",
+          "competingCars": [],
+          "raceName": "Ourense Prix",
+          "participatingGarages": [
+            {
+              "garageName": "Crazy Cars",
+              "garageCars": [
+                {
+                  "garage": "",
+                  "model": "Xara",
+                  "brand": "Citroen"
+                },
+                {
+                  "garage": "",
+                  "model": "Mondeo",
+                  "brand": "Ford"
+                },
+                {
+                  "garage": "",
+                  "model": "207",
+                  "brand": "Peugeot"
+                },
+                {
+                  "garage": "",
+                  "model": "Auris",
+                  "brand": "Toyota"
+                },
+                {
+                  "garage": "",
+                  "model": "Prius",
+                  "brand": "Toyota"
+                }
+              ]
+            }
+          ],
+          "minsDuration": 180
+        },
+        {
+          "raceType": "Qualifier",
+          "competingCars": [],
+          "raceName": "Vigo Prix",
+          "participatingGarages": [
+            {
+              "garageName": "Crazy Cars",
+              "garageCars": [
+                {
+                  "garage": "",
+                  "model": "Xara",
+                  "brand": "Citroen"
+                },
+                {
+                  "garage": "",
+                  "model": "Mondeo",
+                  "brand": "Ford"
+                },
+                {
+                  "garage": "",
+                  "model": "207",
+                  "brand": "Peugeot"
+                },
+                {
+                  "garage": "",
+                  "model": "Auris",
+                  "brand": "Toyota"
+                },
+                {
+                  "garage": "",
+                  "model": "Prius",
+                  "brand": "Toyota"
+                }
+              ]
+            },
+            {
+              "garageName": "Funny Cars",
+              "garageCars": [
+                {
+                  "garage": "",
+                  "model": "A3",
+                  "brand": "Audi"
+                },
+                {
+                  "garage": "",
+                  "model": "C3",
+                  "brand": "Citroen"
+                },
+                {
+                  "garage": "",
+                  "model": "Fiesta",
+                  "brand": "Ford"
+                },
+                {
+                  "garage": "",
+                  "model": "Stilo",
+                  "brand": "Fiat"
+                },
+                {
+                  "garage": "",
+                  "model": "Civic",
+                  "brand": "Honda"
+                }
+              ]
+            }
+          ],
+          "warmUpMinutes": 25
+        },
+        {
+          "raceType": "Qualifier",
+          "competingCars": [],
+          "raceName": "Santiago Prix",
+          "participatingGarages": [
+            {
+              "garageName": "Fabulous Cars",
+              "garageCars": [
+                {
+                  "garage": "",
+                  "model": "Leon",
+                  "brand": "Seat"
+                },
+                {
+                  "garage": "",
+                  "model": "Megane",
+                  "brand": "Renault"
+                },
+                {
+                  "garage": "",
+                  "model": "Ibiza",
+                  "brand": "Seat"
+                },
+                {
+                  "garage": "",
+                  "model": "Clio",
+                  "brand": "Renault"
+                },
+                {
+                  "garage": "",
+                  "model": "208",
+                  "brand": "Peugeot"
+                }
+              ]
+            }
+          ],
+          "warmUpMinutes": 30
+        },
+        {
+          "raceType": "Standard",
+          "competingCars": [],
+          "raceName": "Lugo Prix",
+          "participatingGarages": [
+            {
+              "garageName": "Funny Cars",
+              "garageCars": [
+                {
+                  "garage": "",
+                  "model": "A3",
+                  "brand": "Audi"
+                },
+                {
+                  "garage": "",
+                  "model": "C3",
+                  "brand": "Citroen"
+                },
+                {
+                  "garage": "",
+                  "model": "Fiesta",
+                  "brand": "Ford"
+                },
+                {
+                  "garage": "",
+                  "model": "Stilo",
+                  "brand": "Fiat"
+                },
+                {
+                  "garage": "",
+                  "model": "Civic",
+                  "brand": "Honda"
+                }
+              ]
+            },
+            {
+              "garageName": "Fabulous Cars",
+              "garageCars": [
+                {
+                  "garage": "",
+                  "model": "Leon",
+                  "brand": "Seat"
+                },
+                {
+                  "garage": "",
+                  "model": "Megane",
+                  "brand": "Renault"
+                },
+                {
+                  "garage": "",
+                  "model": "Ibiza",
+                  "brand": "Seat"
+                },
+                {
+                  "garage": "",
+                  "model": "Clio",
+                  "brand": "Renault"
+                },
+                {
+                  "garage": "",
+                  "model": "208",
+                  "brand": "Peugeot"
+                }
+              ]
+            }
+          ],
+          "minsDuration": 180
+        }
+      ]
+    }
+  ],
+  "races": [
+    {
+      "raceType": "Standard",
+      "competingCars": [],
+      "raceName": "Ourense Prix",
+      "participatingGarages": [
+        {
+          "garageName": "Crazy Cars",
+          "garageCars": [
+            {
+              "garage": "",
+              "model": "Xara",
+              "brand": "Citroen"
+            },
+            {
+              "garage": "",
+              "model": "Mondeo",
+              "brand": "Ford"
+            },
+            {
+              "garage": "",
+              "model": "207",
+              "brand": "Peugeot"
+            },
+            {
+              "garage": "",
+              "model": "Auris",
+              "brand": "Toyota"
+            },
+            {
+              "garage": "",
+              "model": "Prius",
+              "brand": "Toyota"
+            }
+          ]
+        }
+      ],
+      "minsDuration": 180
+    },
+    {
+      "raceType": "Qualifier",
+      "competingCars": [],
+      "raceName": "Vigo Prix",
+      "participatingGarages": [
+        {
+          "garageName": "Crazy Cars",
+          "garageCars": [
+            {
+              "garage": "",
+              "model": "Xara",
+              "brand": "Citroen"
+            },
+            {
+              "garage": "",
+              "model": "Mondeo",
+              "brand": "Ford"
+            },
+            {
+              "garage": "",
+              "model": "207",
+              "brand": "Peugeot"
+            },
+            {
+              "garage": "",
+              "model": "Auris",
+              "brand": "Toyota"
+            },
+            {
+              "garage": "",
+              "model": "Prius",
+              "brand": "Toyota"
+            }
+          ]
+        },
+        {
+          "garageName": "Funny Cars",
+          "garageCars": [
+            {
+              "garage": "",
+              "model": "A3",
+              "brand": "Audi"
+            },
+            {
+              "garage": "",
+              "model": "C3",
+              "brand": "Citroen"
+            },
+            {
+              "garage": "",
+              "model": "Fiesta",
+              "brand": "Ford"
+            },
+            {
+              "garage": "",
+              "model": "Stilo",
+              "brand": "Fiat"
+            },
+            {
+              "garage": "",
+              "model": "Civic",
+              "brand": "Honda"
+            }
+          ]
+        }
+      ],
+      "warmUpMinutes": 25
+    },
+    {
+      "raceType": "Standard",
+      "competingCars": [],
+      "raceName": "Lugo Prix",
+      "participatingGarages": [
+        {
+          "garageName": "Funny Cars",
+          "garageCars": [
+            {
+              "garage": "",
+              "model": "A3",
+              "brand": "Audi"
+            },
+            {
+              "garage": "",
+              "model": "C3",
+              "brand": "Citroen"
+            },
+            {
+              "garage": "",
+              "model": "Fiesta",
+              "brand": "Ford"
+            },
+            {
+              "garage": "",
+              "model": "Stilo",
+              "brand": "Fiat"
+            },
+            {
+              "garage": "",
+              "model": "Civic",
+              "brand": "Honda"
+            }
+          ]
+        },
+        {
+          "garageName": "Fabulous Cars",
+          "garageCars": [
+            {
+              "garage": "",
+              "model": "Leon",
+              "brand": "Seat"
+            },
+            {
+              "garage": "",
+              "model": "Megane",
+              "brand": "Renault"
+            },
+            {
+              "garage": "",
+              "model": "Ibiza",
+              "brand": "Seat"
+            },
+            {
+              "garage": "",
+              "model": "Clio",
+              "brand": "Renault"
+            },
+            {
+              "garage": "",
+              "model": "208",
+              "brand": "Peugeot"
+            }
+          ]
+        }
+      ],
+      "minsDuration": 180
+    },
+    {
+      "raceType": "Qualifier",
+      "competingCars": [],
+      "raceName": "Santiago Prix",
+      "participatingGarages": [
+        {
+          "garageName": "Fabulous Cars",
+          "garageCars": [
+            {
+              "garage": "",
+              "model": "Leon",
+              "brand": "Seat"
+            },
+            {
+              "garage": "",
+              "model": "Megane",
+              "brand": "Renault"
+            },
+            {
+              "garage": "",
+              "model": "Ibiza",
+              "brand": "Seat"
+            },
+            {
+              "garage": "",
+              "model": "Clio",
+              "brand": "Renault"
+            },
+            {
+              "garage": "",
+              "model": "208",
+              "brand": "Peugeot"
+            }
+          ]
+        }
+      ],
+      "warmUpMinutes": 30
+    }
+  ]
+}

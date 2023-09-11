@@ -6,7 +6,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import org.w3c.dom.ls.LSOutput;
+
 
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -56,7 +56,7 @@ public class RaceControl {
             appRaces.add(race.exportRace());
         }
 
-        for(Tournament tournament: this.getTournaments()){
+        for (Tournament tournament : this.getTournaments()) {
             appTournaments.add(tournament.exportTournament());
         }
 
@@ -182,13 +182,12 @@ public class RaceControl {
 
     public void removeGarage() {
         System.out.println("Selecciona el garaje que deseas eliminar: ");
-        int garageIndex = Utils.printAndSelectFromList(this.getGarages());
-        String garageName = this.getGarages().get(garageIndex - 1).getGarageName();
+        Garage garage = Utils.printAndSelectFromList(this.getGarages());
         String isUserSure = Input.string("¿Seguro que deseas eliminar el garaje "
-                + garageName + "? Si(s) / No(n)");
+                + garage.getGarageName() + "? Si(s) / No(n)");
         if (isUserSure.equalsIgnoreCase("s")) {
-            this.garages.remove(garageIndex - 1);
-            System.out.println("El garaje " + garageName + " ha sido eliminado correctamente");
+            this.garages.remove(garage);
+            System.out.println("El garaje " + garage.getGarageName() + " ha sido eliminado correctamente");
         } else {
             System.out.println("Operación caneclada");
             displayManageGaragesMenu();
@@ -197,8 +196,7 @@ public class RaceControl {
 
     public void displayEditGarageMenu() {
         System.out.println("Selecciona el garaje que quieres editar: ");
-        int garageIndex = Utils.printAndSelectFromList(this.getGarages());
-        this.currentGarage = this.getGarages().get(garageIndex - 1);
+        this.currentGarage = Utils.printAndSelectFromList(this.getGarages());
 
         int selectedOption;
         do {
@@ -236,8 +234,7 @@ public class RaceControl {
 
     public void removeCarFromGarage() {
         System.out.println("Selecciona el coche que deseas eliminar: ");
-        int carIndex = Utils.printAndSelectFromList(this.currentGarage.getGarageCars());
-        Car carToRemove = this.currentGarage.getGarageCars().get(carIndex - 1);
+        Car carToRemove = Utils.printAndSelectFromList(this.currentGarage.getGarageCars());
         String isUserSure = Input.string("¿Seguro que quieres eliminar el coche " +
                 carToRemove.getBrand() + " " + carToRemove.getModel() + "? Si(s) / No(n)");
         if (isUserSure.equalsIgnoreCase("s")) {
@@ -266,7 +263,8 @@ public class RaceControl {
             System.out.println("2 - Añadir carrera");
             System.out.println("3 - Eliminar carrera");
             System.out.println("4 - Editar carrera");
-            System.out.println("5 - Volver");
+            System.out.println("5 - Iniciar una carrera");
+            System.out.println("6 - Volver");
 
             selectedOption = Input.integer();
 
@@ -275,15 +273,18 @@ public class RaceControl {
                     Utils.printFromList(this.getRaces());
                     break;
                 case 2:
-                    // TODO añadir carrera
+                    this.addRace();
                     break;
                 case 3:
-                    // TODO eliminar carrera
+                    this.removeRace();
                     break;
                 case 4:
-                    // TODO editar carrera
+                    this.displayEditRaceMenu();
                     break;
                 case 5:
+                    this.runRace();
+                    break;
+                case 6:
                     this.init();
                     break;
                 default:
@@ -291,12 +292,126 @@ public class RaceControl {
                     break;
             }
 
-        } while (selectedOption != 5);
-
-
+        } while (selectedOption != 6);
     }
 
+    public void addRace() {
+        Race newRace = null;
+        System.out.println("Selecciona el tipo de carrera que deseas añadir: ");
+        System.out.println("1 - Estándar");
+        System.out.println("2 - Eliminatoria");
+        int typeSelection = Input.integer();
+        if (typeSelection != 1 && typeSelection != 2) {
+            System.out.println("Opción no válida. Operación cancelada");
+            this.displayManageRacesMenu();
+        } else if (typeSelection == 1) {
+            newRace = new StandardRace();
+            newRace.setRaceType("Standard");
+        } else {
+            newRace = new QualifierRace();
+            newRace.setRaceType("Qualifier");
+        }
+        this.getRaces().add(newRace);
+        System.out.println("Se ha creado la carrera " + newRace.getRaceName());
+    }
+
+    public void removeRace() {
+        System.out.println("Selecciona la carrera que deseas eliminar: ");
+        Race raceToRemove = Utils.printAndSelectFromList(this.getRaces());
+        String isUserSure = Input.string("¿Seguro que deseas eliminar la carrera "
+                + raceToRemove.getRaceName() + "? Si(s) / No(n)");
+        if (isUserSure.equalsIgnoreCase("s")) {
+            this.getRaces().remove(raceToRemove);
+            System.out.println("La carrera " + raceToRemove.getRaceName() + " ha sido eliminada correctamente");
+        } else {
+            System.out.println("Operación caneclada");
+            this.displayManageRacesMenu();
+        }
+    }
+
+    public void displayEditRaceMenu() {
+        System.out.println("Selecciona la carrera que quieres editar: ");
+        this.currentRace = Utils.printAndSelectFromList(this.getRaces());
+
+        int selectedOption;
+        do {
+            System.out.println("Selecciona la acción que deseas realizar: ");
+            System.out.println("1 - Ver garages participantes");
+            System.out.println("2 - Ver coches participantes");
+            System.out.println("3 - Añadir garage");
+            System.out.println("4 - Eliminar garage");
+            System.out.println("5 - Cambiar nombre");
+            System.out.println("6 - Ver podiums");
+            System.out.println("7 - Volver");
+            selectedOption = Input.integer();
+
+            switch (selectedOption) {
+                case 1:
+                    Utils.printFromList(this.currentRace.getParticipatingGarages());
+                    break;
+                case 2:
+                    Utils.printFromList(currentRace.getCompetingCars());
+                    break;
+                case 3:
+                    this.addGarageToRace();
+                    break;
+                case 4:
+                    this.removeGarageFromRace();
+                    break;
+                case 5:
+                    this.changeRaceName();
+                    break;
+                case 6:
+                    // TODO ver podiums
+                    break;
+                case 7:
+                    this.displayManageRacesMenu();
+                    break;
+                default:
+                    System.out.println("Opción no válida");
+            }
+        } while (selectedOption != 7);
+    }
+
+    public void runRace(){
+        System.out.println("Elige la carrera que quieres iniciar: ");
+        this.currentRace = Utils.printAndSelectFromList(this.getRaces());
+        this.currentRace.startRace();
+        System.out.println("Carrera finalizada");
+        System.out.println("El podium de la carrera es: ");
+        this.currentRace.printPodium();
+    }
+    public void addGarageToRace() {
+        System.out.println("Selecciona el garaje que quieres añadir: ");
+        Garage garageToAdd = Utils.printAndSelectFromList(this.getGarages());
+        // TODO comprobar si el garaje ya está en la lista de participantes
+        this.currentRace.getParticipatingGarages().add(garageToAdd);
+        System.out.println("Se ha añadido el garaje " + garageToAdd.getGarageName() + " a la carrera");
+    }
+
+    public void removeGarageFromRace(){
+        System.out.println("Selecciona el garaje que quieres eliminar: ");
+        Garage garageToRemove = Utils.printAndSelectFromList(this.currentRace.getParticipatingGarages());
+        String isUserSure = Input.string("¿Seguro que deseas eliminar el garaje "
+                + garageToRemove.getGarageName() + "? Si(s) / No(n)");
+        if (isUserSure.equalsIgnoreCase("s")) {
+            this.currentRace.getParticipatingGarages().remove(garageToRemove);
+            System.out.println("El garaje " + garageToRemove.getGarageName() + " ha sido eliminado correctamente");
+        } else {
+            System.out.println("Operación caneclada");
+            this.displayEditRaceMenu();
+        }
+    }
+
+    public void changeRaceName() {
+        String actualRaceName = this.currentRace.getRaceName();
+        String newRaceName = Input.string("Introduce el nuevo nombre de la carrera: ");
+        this.currentRace.setRaceName(newRaceName);
+        System.out.println("La carrera " + actualRaceName + " ha cambiado su nombre a " +
+                newRaceName);
+    }
 }
+
 
 
 

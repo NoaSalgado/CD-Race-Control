@@ -1,7 +1,7 @@
 package com.campusdual.racecontrol;
 
+import com.campusdual.racecontrol.util.Input;
 import com.campusdual.racecontrol.util.Utils;
-import org.example.Input;
 import org.json.simple.JSONObject;
 
 import java.util.Random;
