@@ -67,6 +67,13 @@ public class Garage {
 
     @Override
     public String toString(){
-        return this.getGarageName();
+        StringBuilder sb = new StringBuilder();
+        sb.append("Garaje: ").append(this.getGarageName());
+        sb.append("\nCoches: \n");
+        for(Car car: this.getGarageCars()){
+            sb.append(car).append("\n");
+        }
+        sb.append("-------------------------------------").append("\n");
+        return sb.toString();
     }
 }

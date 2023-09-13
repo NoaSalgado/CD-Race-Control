@@ -515,7 +515,7 @@ public class RaceControl {
                     this.removeRaceFromTournament();
                     break;
                 case 7:
-                 // TODO cambiar nombre
+                    this.changeTournamentName();
                     break;
                 case 8:
                     this.currentTournament = null;
@@ -568,6 +568,14 @@ public class RaceControl {
             System.out.println("Operación caneclada");
             this.displayEditTournamentMenu();
         }
+    }
+
+    public void changeTournamentName() {
+        String actualTournamentName = this.currentTournament.getTournamentName();
+        String newTournamentName = Input.string("Introduce el nuevo nombre del torneo: ");
+        this.currentTournament.setTournamentName(newTournamentName);
+        System.out.println("El torneo " + actualTournamentName + " ha cambiado su nombre a " +
+                newTournamentName);
     }
 }
 

@@ -32,6 +32,7 @@ public class StandardRace extends Race{
         int timeRemainig = this.minsDuration;
         while(timeRemainig > 0){
             for(Car car: this.getCompetingCars()){
+                car.resetCar();
                 car.updateSpeedByCycle();
             }
             timeRemainig--;
@@ -70,5 +71,23 @@ public class StandardRace extends Race{
         race.importCars(carsArr);
 
         return race;
+    }
+
+    @Override
+    public String toString(){
+        StringBuilder sb = new StringBuilder();
+        sb.append("Carrera: ").append(this.getRaceName());
+        sb.append("\nTipo: ").append(this.getRaceType());
+        sb.append("\nDuración: ").append(this.getMinsDuration()).append(" minutos");
+        sb.append("\nGarajes participantes: ");
+        if(!this.getParticipatingGarages().isEmpty()){
+            for(Garage garage : this.getParticipatingGarages()){
+                sb.append(garage).append("\n");
+            }
+        }else{
+            sb.append("La carrera todavía no tiene garajes asignados");
+        }
+        sb.append("*******************************************************");
+        return sb.toString();
     }
 }

@@ -18,11 +18,11 @@ public class Tournament {
     private final List<Car> tournamentCars = new ArrayList<>();
     private Car winner = null;
 
-    public Tournament(){
+    public Tournament() {
         this.tournamentName = Input.string("Introduce el nombre del torneo: ");
     }
 
-    public Tournament(String tournamentName){
+    public Tournament(String tournamentName) {
         this.tournamentName = tournamentName;
     }
 
@@ -51,37 +51,39 @@ public class Tournament {
     }
 
     public void startTournament() {
-        for (Race race : this.getTournamentRaces()) {
-            race.getParticipatingGarages().clear();
-            for(Garage garage : this.getTournamentsGarages()){
-                race.getParticipatingGarages().add(garage);
+        if (!this.getTournamentsGarages().isEmpty() && !this.getTournamentRaces().isEmpty()) {
+            for (Race race : this.getTournamentRaces()) {
+                race.getParticipatingGarages().clear();
+                for (Garage garage : this.getTournamentsGarages()) {
+                    race.getParticipatingGarages().add(garage);
+                }
+                race.startRace();
+                int points = 3;
+                for (int i = 0; i < race.getPodium().size(); i++) {
+                    race.getPodium().get(i).setPoints(points);
+                    points--;
+                }
+                this.getTournamentCars().addAll(race.getCompetingCars());
             }
-           race.startRace();
-            int points = 3;
-            for(int i = 0; i < race.getPodium().size(); i++){
-                race.getPodium().get(i).setPoints(points);
-                points--;
-            }
-            this.getTournamentCars().addAll(race.getCompetingCars());
+            this.checkWinner();
+            this.printWinner();
         }
-        this.checkWinner();
-        this.printWinner();
     }
 
-    public void checkWinner(){
+    public void checkWinner() {
         Collections.sort(this.getTournamentCars(), new CompareCarByPoints());
         Collections.reverse(this.getTournamentCars());
         this.winner = this.getTournamentCars().get(0);
     }
 
-    public void printWinner(){
+    public void printWinner() {
         System.out.println("El ganador del torneo es " + this.getWinner());
     }
 
-    public JSONObject exportTournament(){
+    public JSONObject exportTournament() {
         JSONObject tournamentObject = new JSONObject();
         JSONArray tournamentRacesArr = new JSONArray();
-        for(Race race : this.getTournamentRaces()){
+        for (Race race : this.getTournamentRaces()) {
             tournamentRacesArr.add(race.exportRace());
         }
         tournamentObject.put(Tournament.TOURNAMENT_NAME, this.getTournamentName());
@@ -89,12 +91,12 @@ public class Tournament {
         return tournamentObject;
     }
 
-    public static Tournament importTournament(JSONObject tournamentObject){
+    public static Tournament importTournament(JSONObject tournamentObject) {
         String tournamentName = (String) tournamentObject.get(Tournament.TOURNAMENT_NAME);
         JSONArray tournamentRacesArr = (JSONArray) tournamentObject.get(Tournament.TOURNAMENT_RACES);
         Tournament tournament = new Tournament(tournamentName);
 
-        for(int i = 0; i < tournamentRacesArr.size(); i++){
+        for (int i = 0; i < tournamentRacesArr.size(); i++) {
             JSONObject raceObj = (JSONObject) tournamentRacesArr.get(i);
             Race race = null;
             if (raceObj.get(Race.TYPE).equals("Standard")) {
@@ -106,8 +108,34 @@ public class Tournament {
         }
         return tournament;
     }
+
     @Override
-    public String toString(){
-        return this.getTournamentName();
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Torneo: ").append(this.getTournamentName());
+        sb.append("\nCarreras: \n");
+        if (!this.getTournamentRaces().isEmpty()) {
+            for (Race race : this.getTournamentRaces()) {
+                sb.append(race.getRaceName()).append(" - ")
+                        .append(race.getRaceType()).append("\n");
+            }
+        } else {
+            sb.append("\nEl torneo todavía no tiene carreras asgnadas");
+        }
+        sb.append("\nGarajes: ");
+        if (!this.getTournamentsGarages().isEmpty()) {
+            for (Garage garage : this.getTournamentsGarages()) {
+                sb.append(garage.getGarageName()).append("\n");
+            }
+        } else {
+            sb.append("\nEl torneo todavía no tiene garajes asignados");
+        }
+
+        if (this.getWinner() != null) {
+            sb.append(winner).append("\n");
+        } else {
+            sb.append("\nEl torneo todavía no se ha celebrado");
+        }
+        return sb.toString();
     }
 }

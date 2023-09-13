@@ -6,7 +6,6 @@ import org.json.simple.JSONObject;
 
 public class QualifierRace extends Race{
     public static final String WARMUP_MINUTES = "warmUpMinutes";
-    public static final String RACE_TYPE = "Qualifier";
     private int warmUpMinutes;
 
     public QualifierRace() {
@@ -32,10 +31,12 @@ public class QualifierRace extends Race{
         int timeRemaining = this.getWarmUpMinutes();
         while(timeRemaining > 0){
             for(Car car: this.getCompetingCars()){
+                car.resetCar();
                 car.updateSpeedByCycle();
             }
             timeRemaining--;
         }
+
         this.getRaceRanking();
         int carsInRace = this.getCompetingCars().size();
         while(carsInRace > 1){
@@ -73,5 +74,23 @@ public class QualifierRace extends Race{
         race.importGarages(garagesArr);
         race.importCars(carsArr);
         return race;
+    }
+
+    @Override
+    public String toString(){
+        StringBuilder sb = new StringBuilder();
+        sb.append("Carrera: ").append(this.getRaceName());
+        sb.append("\nTipo: ").append(this.getRaceType());
+        sb.append("\nDuración del calentamiento: ").append(this.getWarmUpMinutes()).append(" minutos");
+        sb.append("\nGarajes participantes: \n");
+        if(!this.getParticipatingGarages().isEmpty()){
+            for(Garage garage : this.getParticipatingGarages()){
+                sb.append(garage).append("\n");
+            }
+        }else{
+            sb.append("La carrera todavía no tiene garajes asignados");
+        }
+        sb.append("*******************************************************");
+        return sb.toString();
     }
 }

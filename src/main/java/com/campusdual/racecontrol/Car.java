@@ -85,6 +85,11 @@ public class Car implements Comparable<Car> {
         updateDistance();
     }
 
+    public void resetCar(){
+        this.speed= 0;
+        this.distanceCovered = 0;
+    }
+
     public JSONObject exportCar(){
         JSONObject carObject = new JSONObject();
         carObject.put(Car.BRAND, this.getBrand());
@@ -118,12 +123,12 @@ public class Car implements Comparable<Car> {
     @Override
     public String toString(){
         StringBuilder sb = new StringBuilder();
-        sb.append("Marca: ").append(this.getBrand());
-        sb.append("\n\t\tModelo: ").append(this.getModel());
-        sb.append("\n\t\tGaraje: ").append(this.getGarageName());
-        sb.append("\n\t\tDistancia recorrida: ").append(this.getDistanceCovered());
-        sb.append("\n\t\tPuntos: ").append(this.getPoints());
-        sb.append("######");
+        sb.append("\tMarca: ").append(this.getBrand());
+        sb.append("\n\tModelo: ").append(this.getModel());
+        sb.append("\n\tGaraje: ").append(this.getGarageName());
+        sb.append("\n\tDistancia recorrida: ").append(this.getDistanceCovered());
+        sb.append("\n\tPuntos: ").append(this.getPoints());
+        sb.append("\n         ######"         );
         return sb.toString();
     }
 }

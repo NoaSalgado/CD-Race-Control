@@ -55,14 +55,16 @@ public abstract class Race {
     }
 
     public void setParticipatingCars(){
-        if(this.getParticipatingGarages().size() == 1){
-            this.competingCars.addAll(this.getParticipatingGarages().get(0).getGarageCars());
-        }else{
-            for(Garage garage: this.getParticipatingGarages()){
-                int randomCarIndex = Utils.generateRandomNumber(0, garage.getGarageCars().size());
-                this.getCompetingCars().add(garage.getGarageCars().get(randomCarIndex));
-            }
-        }
+       if(!this.getParticipatingGarages().isEmpty()){
+           if(this.getParticipatingGarages().size() == 1){
+               this.competingCars.addAll(this.getParticipatingGarages().get(0).getGarageCars());
+           }else{
+               for(Garage garage: this.getParticipatingGarages()){
+                   int randomCarIndex = Utils.generateRandomNumber(0, garage.getGarageCars().size());
+                   this.getCompetingCars().add(garage.getGarageCars().get(randomCarIndex));
+               }
+           }
+       }
     }
 
     public abstract void startRace();
@@ -113,10 +115,5 @@ public abstract class Race {
             Car car = Car.importCar((JSONObject) carsArr.get(i));
             this.getCompetingCars().add(car);
         }
-    }
-
-    @Override
-    public String toString(){
-        return this.getRaceName();
     }
 }
